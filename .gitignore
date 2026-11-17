@@ -1,0 +1,28 @@
+# Salidas y crudos. El código sí se versiona; esto se regenera o no se puede
+# redistribuir.
+
+# Datos crudos. Si en algún momento se incorpora una descarga de Bloomberg,
+# NO puede subirse: las condiciones de uso no permiten redistribuir los datos.
+# Por eso la carpeta entera queda fuera del control de versiones, y el
+# diccionario documenta de dónde sale cada serie.
+data/
+
+# Biblioteca de paquetes de renv. Se reconstruye con renv::restore() a partir
+# de renv.lock, que sí se versiona.
+renv/library/
+renv/staging/
+renv/python/
+renv/sandbox/
+
+# Salidas: se regeneran con un solo comando.
+02_curados/
+03_resultados/
+informe.md
+
+# R
+.Rhistory
+.RData
+.Rproj.user/
+
+# macOS
+.DS_Store

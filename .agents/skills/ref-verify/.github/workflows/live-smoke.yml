@@ -1,0 +1,48 @@
+name: Live Smoke
+
+on:
+  workflow_dispatch:
+
+jobs:
+  live-smoke:
+    name: Public API smoke
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v6
+
+      - name: Set up Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+
+      - name: Install package
+        run: python -m pip install -e .
+
+      - name: CrossRef DOI metadata smoke
+        run: |
+          ref-verify verify-doi 10.1126/science.287.5454.836 \
+            --title "High-Speed Electrically Actuated Elastomers with Strain Greater Than 100%" \
+            --first-author Pelrine \
+            --year 2000 \
+            --json
+
+      - name: DOI-bound abstract claim smoke
+        run: |
+          ref-verify check-claim 10.1126/science.287.5454.836 \
+            --claim "actuation strain above 100%" \
+            --json
+
+      - name: Retracted paper is rejected
+        shell: bash
+        run: |
+          out="$(ref-verify verify-doi '10.1016/S0140-6736(97)11096-0' \
+            --title 'Ileal-lymphoid-nodular hyperplasia, non-specific colitis, and pervasive developmental disorder in children' \
+            --first-author Wakefield --year 1998 --json || true)"
+          echo "$out"
+          echo "$out" | python -c 'import json,sys; d=json.load(sys.stdin); assert d["verdict"] == "REJECT" and "retracted" in d["mismatches"], d'
+
+      - name: CLI regression ship gate
+        run: PYTHONPATH=src python evals/run_cli_regression.py

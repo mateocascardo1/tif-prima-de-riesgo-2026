@@ -1,0 +1,33 @@
+{
+  "version": 2,
+  "skills": {
+    "academic-writing-style": {
+      "source": "revfactory/harness-100",
+      "sourceType": "github",
+      "skillPath": "en/58-thesis-advisor/.claude/skills/academic-writing-style/SKILL.md",
+      "computedHash": "b98d4e599dd526e9d3babd0774018307e59ef4c97a51a0be9b9613a6c3ac32d9",
+      "installMode": "copy"
+    },
+    "apa-style-citation": {
+      "source": "romanmesicek/agent-skills",
+      "sourceType": "github",
+      "skillPath": "apa-style-citation/SKILL.md",
+      "computedHash": "51ccd13e72b10301d4f683db153a03f957f764aa4573eae764b446eb903f0de5",
+      "installMode": "copy"
+    },
+    "apa7": {
+      "source": "jagger19999/apa7-claude-skill",
+      "sourceType": "github",
+      "skillPath": ".claude/skills/apa7/SKILL.md",
+      "computedHash": "62a1bcb37b223c38ef1461752f2f7334ec46a0b190db61e3d5687fa819aa8cfa",
+      "installMode": "copy"
+    },
+    "ref-verify": {
+      "source": "Moonweave-Research/ref-verify",
+      "sourceType": "github",
+      "skillPath": "SKILL.md",
+      "computedHash": "9c4a4e7d7f79bb6f26a0fc12f3b7c66da3180a45c413338a478482f3987fe3ff",
+      "installMode": "copy"
+    }
+  }
+}
