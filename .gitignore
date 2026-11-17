@@ -26,3 +26,8 @@ informe.md
 
 # macOS
 .DS_Store
+
+# Configuración local del editor y skills. No forman parte de la tesis.
+.cursor/
+.agents/
+skills-lock.json
